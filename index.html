@@ -3,127 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday! 🎂</title>
+    <title>WOI ADA YANG ULTAY! 🤡</title>
     <style>
-        /* CSS untuk mempercantik tampilan */
         body {
-            margin: 0;
-            padding: 0;
+            background-color: #00ff00; /* Warna hijau silau */
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
+            margin: 0;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym49.cur'), auto;
+        }
+
+        .box-konyol {
+            background: yellow;
+            border: 5px dashed red;
+            padding: 20px;
             text-align: center;
+            transform: rotate(-5deg);
+            box-shadow: 15px 15px 0px blue;
         }
 
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            z-index: 10;
-            max-width: 400px;
-        }
+        h1 { font-size: 50px; color: magenta; text-shadow: 2px 2px white; }
 
-        h1 { color: #ff6b6b; margin-bottom: 10px; }
-        p { color: #555; line-height: 1.6; }
-
-        .btn-utama {
-            background-color: #ff6b6b;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 50px;
+        .btn-pencet {
+            background: orange;
+            font-size: 30px;
+            padding: 20px 40px;
+            border: 4px outset white;
             cursor: pointer;
-            transition: 0.3s;
-            margin-top: 20px;
+            font-weight: bold;
         }
 
-        .btn-utama:hover {
-            background-color: #ff4757;
-            transform: scale(1.05);
+        .btn-pencet:active { border-style: inset; }
+
+        #isi-kejutan {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 0, 255, 0.8);
+            z-index: 100;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        #pesan-rahasia {
-            display: none; /* Disembunyikan dulu */
-            margin-top: 20px;
-            animation: fadeIn 2s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Hiasan Balon Sederhana */
-        .balloon {
+        .emoji-terbang {
             position: absolute;
-            bottom: -100px;
-            width: 50px;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            animation: fly 6s infinite ease-in;
+            font-size: 50px;
+            animation: puter-puter 2s infinite linear;
         }
 
-        @keyframes fly {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+        @keyframes puter-puter {
+            from { transform: rotate(0deg) scale(1); }
+            to { transform: rotate(360deg) scale(1.5); }
+        }
+
+        .foto-meme {
+            width: 250px;
+            border: 10px solid white;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div id="tampilan-awal">
-            <h1>Ada Kejutan Buat Kamu! 🎁</h1>
-            <p>Klik tombol di bawah ini ya...</p>
-            <button class="btn-utama" onclick="tampilkanKejutan()">Buka Hadiah</button>
-        </div>
-
-        <div id="pesan-rahasia">
-            <h1>Selamat Ulang Tahun! 🎉</h1>
-            <img src="https://via.placeholder.com/150" alt="Foto Ultah" style="border-radius: 50%; margin: 10px 0;">
-            <p>Semoga di usia yang baru ini, kamu semakin bahagia, sehat selalu, dan semua impianmu tercapai!</p>
-            <p><b>- Dari Sahabatmu -</b></p>
-        </div>
+    <div class="box-konyol" id="halaman-depan">
+        <h1>HEI KAMU!!! 🤡</h1>
+        <p>Ada tagihan yang belum dibayar nih...</p>
+        <button class="btn-pencet" onclick="mulaiKekacauan()">KLIK KALO BERANI!</button>
     </div>
 
-    <audio id="laguUltah" loop>
-        <source src="lagu.mp3" type="audio/mpeg">
-        Browser kamu tidak mendukung audio.
+    <div id="isi-kejutan">
+        <h1 style="color: yellow;">HBD YA JELEKKK! 🎂🔥</h1>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4/3o7TKMGpxoYQH8v0S4/giphy.gif" class="foto-meme">
+        <h2 style="color: white; background: black;">TAMBAH TUA TAMBAH BEBAN!</h2>
+        <p style="font-size: 40px;">🎉🤡💀🤣🍕🍟</p>
+    </div>
+
+    <audio id="suaraKonyol" loop>
+        <source src="musik-lucu.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        function tampilkanKejutan() {
-            // 1. Sembunyikan tampilan awal
-            document.getElementById('tampilan-awal').style.display = 'none';
-
-            // 2. Munculkan pesan rahasia
-            document.getElementById('pesan-rahasia').style.display = 'block';
-
-            // 3. Putar Musik
-            var audio = document.getElementById('laguUltah');
+        function mulaiKekacauan() {
+            document.getElementById('halaman-depan').style.display = 'none';
+            document.getElementById('isi-kejutan').style.display = 'flex';
+            
+            let audio = document.getElementById('suaraKonyol');
             audio.play();
 
-            // 4. Buat Efek Balon
-            buatBalon();
-        }
-
-        function buatBalon() {
-            for (let i = 0; i < 15; i++) {
-                let balon = document.createElement("div");
-                balon.className = "balloon";
-                balon.style.left = Math.random() * 100 + "vw";
-                balon.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`;
-                balon.style.animationDelay = Math.random() * 3 + "s";
-                document.body.appendChild(balon);
+            // Munculkan banyak emoji gak jelas di layar
+            for (let i = 0; i < 50; i++) {
+                setTimeout(buatEmoji, i * 100);
             }
         }
-    </script>
-</body>
-</html>
+
+        function buatEmoji() {
+            const emojis = ['🤣', '🤡', '💀', '👽', '💩', '🔥', '🍕'];
+            let e = document.createElement("div");
+            e.className = "emoji-terbang";
+            e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            e.style.left = Math.random() * 100 + "vw";
+            e.style.top = Math.random() * 100 + "vh";
+            e.style.fontSize = Math.random() * 50 + 20 + "px";
+            document.body.appendChild(e);
+            
+            // Gerak-gerak random
+            setInterval(() => {
+                e.style.left = Math.random() *
