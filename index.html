@@ -3,113 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WOI ADA YANG ULTAY! 🤡</title>
+    <title>HBD KONYOL! 🤡</title>
     <style>
+        /* Font konyol */
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
         body {
-            background-color: #00ff00; /* Warna hijau silau */
-            font-family: "Comic Sans MS", "Comic Sans", cursive;
+            background-color: #ff00ff; /* Magenta silau */
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym49.cur'), auto;
         }
 
-        .box-konyol {
-            background: yellow;
-            border: 5px dashed red;
-            padding: 20px;
+        #kontainer-awal {
             text-align: center;
-            transform: rotate(-5deg);
-            box-shadow: 15px 15px 0px blue;
+            background: #00ff00; /* Hijau stabilo */
+            padding: 40px;
+            border: 10px dashed yellow;
+            box-shadow: 20px 20px 0px #000;
+            transform: rotate(-3deg);
+            z-index: 10;
         }
-
-        h1 { font-size: 50px; color: magenta; text-shadow: 2px 2px white; }
 
         .btn-pencet {
-            background: orange;
-            font-size: 30px;
+            background: red;
+            color: white;
+            font-size: 25px;
             padding: 20px 40px;
-            border: 4px outset white;
+            border: 5px outset white;
             cursor: pointer;
             font-weight: bold;
+            animation: goyang 0.3s infinite;
         }
 
-        .btn-pencet:active { border-style: inset; }
+        @keyframes goyang {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(1); }
+        }
 
-        #isi-kejutan {
+        #kejutan {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 0, 255, 0.8);
+            background: rgba(255, 255, 0, 0.9);
             z-index: 100;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
         }
 
-        .emoji-terbang {
+        .meme-img {
+            width: 280px;
+            border: 10px solid black;
+            margin: 20px;
+        }
+
+        .emoji-chaos {
             position: absolute;
             font-size: 50px;
-            animation: puter-puter 2s infinite linear;
-        }
-
-        @keyframes puter-puter {
-            from { transform: rotate(0deg) scale(1); }
-            to { transform: rotate(360deg) scale(1.5); }
-        }
-
-        .foto-meme {
-            width: 250px;
-            border: 10px solid white;
+            pointer-events: none;
+            z-index: 101;
         }
     </style>
 </head>
 <body>
 
-    <div class="box-konyol" id="halaman-depan">
-        <h1>HEI KAMU!!! 🤡</h1>
-        <p>Ada tagihan yang belum dibayar nih...</p>
-        <button class="btn-pencet" onclick="mulaiKekacauan()">KLIK KALO BERANI!</button>
+    <div id="kontainer-awal">
+        <h1 style="color: blue;">PENTING!!! 📢</h1>
+        <p>Ada paket mendarat buat kamu, klik untuk buka!</p>
+        <button class="btn-pencet" onclick="mulaiKekacauan()">BUKA PAKET 📦</button>
     </div>
 
-    <div id="isi-kejutan">
-        <h1 style="color: yellow;">HBD YA JELEKKK! 🎂🔥</h1>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4/3o7TKMGpxoYQH8v0S4/giphy.gif" class="foto-meme">
-        <h2 style="color: white; background: black;">TAMBAH TUA TAMBAH BEBAN!</h2>
-        <p style="font-size: 40px;">🎉🤡💀🤣🍕🍟</p>
+    <div id="kejutan">
+        <h1 style="font-size: 50px; color: red; text-shadow: 3px 3px white;">HBD YA JELEK! 🕺🔥</h1>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4/3o7TKMGpxoYQH8v0S4/giphy.gif" class="meme-img">
+        <h2 style="background: black; color: white; padding: 10px;">MAKIN TUA MAKIN AJAIB!</h2>
+        <p style="font-size: 20px;">LAGU KHUSUS BUAT KAMU: VERSI INSPEKTUR VIJAY</p>
     </div>
 
-    <audio id="suaraKonyol" loop>
-        <source src="musik-lucu.mp3" type="audio/mpeg">
+    <audio id="audioIndia" loop>
+        <source src="https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptitle=Happy+Birthday+Indian+Version&filename=24/241512-4f364020-f197-400d-9f44-93e5066927a4.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         function mulaiKekacauan() {
-            document.getElementById('halaman-depan').style.display = 'none';
-            document.getElementById('isi-kejutan').style.display = 'flex';
+            // Sembunyikan halaman depan
+            document.getElementById('kontainer-awal').style.display = 'none';
             
-            let audio = document.getElementById('suaraKonyol');
-            audio.play();
+            // Tampilkan kejutan
+            const kejutan = document.getElementById('kejutan');
+            kejutan.style.display = 'flex';
 
-            // Munculkan banyak emoji gak jelas di layar
-            for (let i = 0; i < 50; i++) {
-                setTimeout(buatEmoji, i * 100);
-            }
+            // Putar audio
+            const audio = document.getElementById('audioIndia');
+            audio.play().catch(error => {
+                console.log("Musik butuh interaksi user.");
+            });
+
+            // Efek ganti warna background & muncul emoji
+            setInterval(() => {
+                document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                buatEmoji();
+            }, 150);
         }
 
         function buatEmoji() {
-            const emojis = ['🤣', '🤡', '💀', '👽', '💩', '🔥', '🍕'];
-            let e = document.createElement("div");
-            e.className = "emoji-terbang";
+            const emojis = ['🤡', '🥳', '💃', '🕺', '💩', '🎂', '🔥'];
+            const e = document.createElement("div");
+            e.className = "emoji-chaos";
             e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
             e.style.left = Math.random() * 100 + "vw";
             e.style.top = Math.random() * 100 + "vh";
-            e.style.fontSize = Math.random() * 50 + 20 + "px";
             document.body.appendChild(e);
-            
-            // Gerak-gerak random
-            setInterval(() => {
-                e.style.left = Math.random() *
+
+            // Hapus emoji setelah 2 detik biar gak berat
+            setTimeout(() => e.remove(), 2000);
+        }
+    </script>
+</body>
+</html>
