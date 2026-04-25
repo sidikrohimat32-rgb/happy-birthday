@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎂</title>
+    <style>
+        /* CSS untuk mempercantik tampilan */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 10;
+            max-width: 400px;
+        }
+
+        h1 { color: #ff6b6b; margin-bottom: 10px; }
+        p { color: #555; line-height: 1.6; }
+
+        .btn-utama {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-utama:hover {
+            background-color: #ff4757;
+            transform: scale(1.05);
+        }
+
+        #pesan-rahasia {
+            display: none; /* Disembunyikan dulu */
+            margin-top: 20px;
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Hiasan Balon Sederhana */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: fly 6s infinite ease-in;
+        }
+
+        @keyframes fly {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="tampilan-awal">
+            <h1>Ada Kejutan Buat Kamu! 🎁</h1>
+            <p>Klik tombol di bawah ini ya...</p>
+            <button class="btn-utama" onclick="tampilkanKejutan()">Buka Hadiah</button>
+        </div>
+
+        <div id="pesan-rahasia">
+            <h1>Selamat Ulang Tahun! 🎉</h1>
+            <img src="https://via.placeholder.com/150" alt="Foto Ultah" style="border-radius: 50%; margin: 10px 0;">
+            <p>Semoga di usia yang baru ini, kamu semakin bahagia, sehat selalu, dan semua impianmu tercapai!</p>
+            <p><b>- Dari Sahabatmu -</b></p>
+        </div>
+    </div>
+
+    <audio id="laguUltah" loop>
+        <source src="lagu.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung audio.
+    </audio>
+
+    <script>
+        function tampilkanKejutan() {
+            // 1. Sembunyikan tampilan awal
+            document.getElementById('tampilan-awal').style.display = 'none';
+
+            // 2. Munculkan pesan rahasia
+            document.getElementById('pesan-rahasia').style.display = 'block';
+
+            // 3. Putar Musik
+            var audio = document.getElementById('laguUltah');
+            audio.play();
+
+            // 4. Buat Efek Balon
+            buatBalon();
+        }
+
+        function buatBalon() {
+            for (let i = 0; i < 15; i++) {
+                let balon = document.createElement("div");
+                balon.className = "balloon";
+                balon.style.left = Math.random() * 100 + "vw";
+                balon.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`;
+                balon.style.animationDelay = Math.random() * 3 + "s";
+                document.body.appendChild(balon);
+            }
+        }
+    </script>
+</body>
+</html>
